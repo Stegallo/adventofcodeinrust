@@ -16,4 +16,31 @@ fn main() {
         }
     }
     println!("sol 1: {max}");
+
+    let mut second_max = 0;
+    for group in read_input().split("\n\n") {
+        let mut sum = 0;
+        for line in group.lines() {
+            let value = line.parse::<u64>().expect("error");
+            sum += value;
+        }
+        if sum > second_max && sum < max {
+            second_max = sum;
+        }
+    }
+
+    let mut third_max = 0;
+    for group in read_input().split("\n\n") {
+        let mut sum = 0;
+        for line in group.lines() {
+            let value = line.parse::<u64>().expect("error");
+            sum += value;
+        }
+        if sum > third_max && sum < second_max {
+            third_max = sum;
+        }
+    }
+
+    let result = max + second_max + third_max;
+    println!("sol 2: {result}");
 }
